@@ -1,3 +1,4 @@
+using System;
 using Defeat;
 using Structs;
 using UnityEngine;
@@ -11,12 +12,12 @@ namespace Parachute
     ///When it hits a wall, it will automatically move the other way and flip the spriteRenderer image
     /// </summary>
     
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class ParachuteBehaviour : MonoBehaviour
     {
-        [SerializeField] private MinAndMaxFloats randomXSpeedParameters;  //Min X speed and max X speed, to be adjusted in the editor.
-        [SerializeField] private MinAndMaxFloats randomYSpeedParameters;  //Min Y speed and max Y speed, to be adjusted in the editor.
+        [SerializeField] private MinAndMaxFloats randomXSpeedParameters;        //Min X speed and max X speed, to be adjusted in the editor.
+        [SerializeField] private MinAndMaxFloats randomYSpeedParameters;        //Min Y speed and max Y speed, to be adjusted in the editor.
         [SerializeField] private string wallTag;                                //The tag the walls have that the parachute will bounce against, adjusted in the editor.
         [SerializeField] private SpriteRenderer spriteRenderer;                 //The sprite renderer used for flipping the image.
 
@@ -41,7 +42,7 @@ namespace Parachute
         /// If it collides with a wall, will reverse the X speed so it moves the other way, and flips the asset.
         /// </summary>
         /// <param name="other">"The other collider with which the parachute collided"</param>
-        private void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag(wallTag)) {return;}
             xSpeed = -xSpeed;

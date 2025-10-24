@@ -45,6 +45,7 @@ namespace Parachute
         {
             yield return new WaitForSeconds(spawnDelayTime);
             Instantiate(parachutePrefab, parachuteSpawnPoint.position, Quaternion.identity);
+            
             var newSpawnDelayTime = Random.Range(randomSpawnDelayParameters.minValue, randomSpawnDelayParameters.maxValue);
             StartCoroutine(SpawnParachuteLoop(newSpawnDelayTime));
         }
