@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Defeat
+namespace GameOver
 {
     //Made by: Sten Kristel
     /// <summary>
@@ -18,8 +18,8 @@ namespace Defeat
 
         private void OnDestroy() => UnAssignEvents();           //Unassigns events on destroy (prevents issues on scene changes)
 
-        private void AssignEvents() => DefeatManager.Instance.OnParachuteMissed += UpdateMissedParachutesUI;    //assigns UpdateMissedParachutesUI on OnParachuteMissed event
-        private void UnAssignEvents() => DefeatManager.Instance.OnParachuteMissed -= UpdateMissedParachutesUI;  //unAssigns UpdateMissedParachutesUI on OnParachuteMissed event
+        private void AssignEvents() => GameOverManager.Instance.OnParachuteMissed += UpdateMissedParachutesUI;    //assigns UpdateMissedParachutesUI on OnParachuteMissed event
+        private void UnAssignEvents() => GameOverManager.Instance.OnParachuteMissed -= UpdateMissedParachutesUI;  //unAssigns UpdateMissedParachutesUI on OnParachuteMissed event
 
         /// <summary>
         /// Updates an image with a new texture that represents a miss, and changes colour to default, to reset the alpha

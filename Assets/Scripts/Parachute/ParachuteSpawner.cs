@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
-using Defeat;
+using GameOver;
 using Structs;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Parachute
@@ -30,9 +28,9 @@ namespace Parachute
         
         private void OnDestroy() => UnAssignEvents();                                           //Unassigns events on destroy (prevents issues on scene changes)
 
-        private void AssignEvents() => DefeatManager.Instance.OnDefeat += StopSpawnLoop;        //Assigns StopSpawnLoop on OnDefeat
+        private void AssignEvents() => GameOverManager.Instance.OnDefeat += StopSpawnLoop;        //Assigns StopSpawnLoop on OnDefeat
         
-        private void UnAssignEvents() => DefeatManager.Instance.OnDefeat -= StopSpawnLoop;      //Unassigns StopSpawnLoop on OnDefeat
+        private void UnAssignEvents() => GameOverManager.Instance.OnDefeat -= StopSpawnLoop;      //Unassigns StopSpawnLoop on OnDefeat
 
         private void StopSpawnLoop() => StopAllCoroutines();                                    //Stops the spawn loop to prevent any spawning of new parachutes when the game has ended
         

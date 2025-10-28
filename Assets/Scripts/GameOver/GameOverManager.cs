@@ -1,16 +1,16 @@
 using System;
 using UnityEngine;
 
-namespace Defeat
+namespace GameOver
 {
     /// <summary>
     /// Singleton used for keeping track of how many parachutes the player has missed,
     /// and making them lose the game when a threshold has been reached.
     /// Only one DefeatManager is allowed to exist in a scene and can be accessed without reference.
     /// </summary>
-    public class DefeatManager : MonoBehaviour
+    public class GameOverManager : MonoBehaviour
     {
-        public static DefeatManager Instance { get; private set; }                      //The instance used by other classes to easily access this class.
+        public static GameOverManager Instance { get; private set; }                      //The instance used by other classes to easily access this class.
         
         [Tooltip("The player is defeated when they have missed this many parachutes")]
         [SerializeField] private int parachutesMissedLoseThreshold;                     //The player is defeated when they have missed this many parachutes

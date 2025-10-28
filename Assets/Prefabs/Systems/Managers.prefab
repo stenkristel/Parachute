@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8398913479658674490}
   - component: {fileID: 5318885021472052344}
   m_Layer: 0
-  m_Name: DefeatManager
+  m_Name: GameOverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

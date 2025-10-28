@@ -1,5 +1,4 @@
-using System;
-using Defeat;
+using GameOver;
 using Structs;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,8 +20,8 @@ namespace Parachute
         [SerializeField] private string wallTag;                                //The tag the walls have that the parachute will bounce against, adjusted in the editor.
         [SerializeField] private SpriteRenderer spriteRenderer;                 //The sprite renderer used for flipping the image.
 
-        private float xSpeed;                                                   //The speed at which the parachute moves along the X axis, becomes assigned at start
-        private float ySpeed;                                                   //The speed at which the parachute moves along the Y axis, becomes assigned at start
+        private float _xSpeed;                                                   //The speed at which the parachute moves along the X axis, becomes assigned at start
+        private float _ySpeed;                                                   //The speed at which the parachute moves along the Y axis, becomes assigned at start
 
         /// <summary>
         /// Assigns events and calculates the X and Y speeds on first frame.
@@ -45,13 +44,13 @@ namespace Parachute
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.CompareTag(wallTag)) {return;}
-            xSpeed = -xSpeed;
+            _xSpeed = -_xSpeed;
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
-        private void AssignsEvents() => DefeatManager.Instance.OnDefeat += DestroySelf;     //Assigns destroySelf on OnDefeat
+        private void AssignsEvents() => GameOverManager.Instance.OnDefeat += DestroySelf;     //Assigns destroySelf on OnDefeat
         
-        private void UnAssignEvents() => DefeatManager.Instance.OnDefeat -= DestroySelf;    //Unassigns DestroySelf on OnDefeat
+        private void UnAssignEvents() => GameOverManager.Instance.OnDefeat -= DestroySelf;    //Unassigns DestroySelf on OnDefeat
 
         private void DestroySelf() => Destroy(gameObject);                                  //Destroys the gameobject
 
@@ -60,8 +59,8 @@ namespace Parachute
         /// </summary>
         private void GenerateSpeed()
         {
-            xSpeed = Random.Range(randomXSpeedParameters.minValue, randomXSpeedParameters.maxValue);
-            ySpeed = Random.Range(randomYSpeedParameters.minValue, randomYSpeedParameters.maxValue);
+            _xSpeed = Random.Range(randomXSpeedParameters.minValue, randomXSpeedParameters.maxValue);
+            _ySpeed = Random.Range(randomYSpeedParameters.minValue, randomYSpeedParameters.maxValue);
         }
         
         /// <summary>
@@ -69,7 +68,7 @@ namespace Parachute
         /// </summary>
         private void MoveParachute()
         {
-            transform.position -= new Vector3(xSpeed, ySpeed, 0) * Time.deltaTime;
+            transform.position -= new Vector3(_xSpeed, _ySpeed, 0) * Time.deltaTime;
         }
         
     }

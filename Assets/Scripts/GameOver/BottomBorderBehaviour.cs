@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Defeat
+namespace GameOver
 {
     //Made by: Sten Kristel
     /// <summary>
@@ -14,7 +14,7 @@ namespace Defeat
         private void OnCollisionEnter2D(Collision2D other)
         {
             Destroy(other.gameObject);
-            DefeatManager.Instance.OnHitBottomBorder();
+            GameOverManager.Instance.OnHitBottomBorder();
         }
     }
 }
