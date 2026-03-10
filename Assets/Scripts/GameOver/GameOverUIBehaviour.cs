@@ -21,8 +21,8 @@ namespace GameOver
         /// </summary>
         private void AssignEvents()
         {
-            GameOverManager.Instance.OnDefeat += EnableVisuals;
-            GameOverManager.Instance.OnDefeat += UpdateScoreUI;
+            GameOverManager.Instance.OnGameOver += EnableVisuals;
+            GameOverManager.Instance.OnGameOver += UpdateScoreUI;
         }
 
         /// <summary>

@@ -13,8 +13,9 @@ namespace Parachute
     /// </summary>
     public class ParachuteSpawner : MonoBehaviour
     {
-        [SerializeField] private MinAndMaxFloats randomSpawnDelayParameters;           //The minimum and maximum spawn delay in seconds      
-        [SerializeField] private GameObject parachutePrefab;                           //The prefab of the parachute
+        [Tooltip("Will randomly spawn one of these, adding more of the same prefabs will increase it's spawn chances and reduce other prefabs spawn chances")]
+        [SerializeField] private GameObject[] parachutePrefabs;                        //The prefab of the parachute
+        [SerializeField] private MinAndMaxFloats randomSpawnDelayParameters;           //The minimum and maximum spawn delay in seconds 
         [SerializeField] private Transform parachuteSpawnPoint;                        //The spawn location of the parachute 
 
         /// <summary>
@@ -28,21 +29,23 @@ namespace Parachute
         
         private void OnDestroy() => UnAssignEvents();                                           //Unassigns events on destroy (prevents issues on scene changes)
 
-        private void AssignEvents() => GameOverManager.Instance.OnDefeat += StopSpawnLoop;        //Assigns StopSpawnLoop on OnDefeat
+        private void AssignEvents() => GameOverManager.Instance.OnGameOver += StopSpawnLoop;        //Assigns StopSpawnLoop on OnDefeat
         
-        private void UnAssignEvents() => GameOverManager.Instance.OnDefeat -= StopSpawnLoop;      //Unassigns StopSpawnLoop on OnDefeat
+        private void UnAssignEvents() => GameOverManager.Instance.OnGameOver -= StopSpawnLoop;      //Unassigns StopSpawnLoop on OnDefeat
 
         private void StopSpawnLoop() => StopAllCoroutines();                                    //Stops the spawn loop to prevent any spawning of new parachutes when the game has ended
         
         /// <summary>
-        /// Waits for spawnDelayTime amount of seconds, then spawns a parachute, determines the new spawnDelayTime and recalls itself.
+        /// Waits for spawnDelayTime amount of seconds, then spawns a random parachute from the parachutePrefabs array,
+        /// then determines the new spawnDelayTime and recalls itself.
         /// </summary>
         /// <param name="spawnDelayTime">The amount of time in seconds the Coroutine should wait until executing the rest of the code</param>
         /// <returns></returns>
         private IEnumerator SpawnParachuteLoop(float spawnDelayTime = 0)
         {
             yield return new WaitForSeconds(spawnDelayTime);
-            Instantiate(parachutePrefab, parachuteSpawnPoint.position, Quaternion.identity);
+            int spawnIndex = Random.Range(0, parachutePrefabs.Length - 1);
+            Instantiate(parachutePrefabs[spawnIndex], parachuteSpawnPoint.position, Quaternion.identity);
             
             var newSpawnDelayTime = Random.Range(randomSpawnDelayParameters.minValue, randomSpawnDelayParameters.maxValue);
             StartCoroutine(SpawnParachuteLoop(newSpawnDelayTime));

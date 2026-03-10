@@ -20,16 +20,20 @@ namespace Parachute
         [SerializeField] private string wallTag;                                //The tag the walls have that the parachute will bounce against, adjusted in the editor.
         [SerializeField] private SpriteRenderer spriteRenderer;                 //The sprite renderer used for flipping the image.
 
-        private float _xSpeed;                                                   //The speed at which the parachute moves along the X axis, becomes assigned at start
-        private float _ySpeed;                                                   //The speed at which the parachute moves along the Y axis, becomes assigned at start
-
+        protected float xSpeed;                                                   //The speed at which the parachute moves along the X axis, becomes assigned at start
+        protected float ySpeed;                                                   //The speed at which the parachute moves along the Y axis, becomes assigned at start
+        
+        private Vector3 _speed;
+        
+        public Vector3 Speed {get => _speed; set =>  _speed = value; }
+        
         /// <summary>
         /// Assigns events and calculates the X and Y speeds on first frame.
         /// </summary>
-        private void Start()
+        protected virtual void Start()
         {
             AssignsEvents();
-            GenerateSpeed(); 
+            SetSpeed(); 
         }
 
         private void OnDestroy() => UnAssignEvents();           //Unassigns events on destroy. (prevents issues on scene changes)
@@ -37,39 +41,51 @@ namespace Parachute
         private void FixedUpdate() => MoveParachute();          //Moves the parachute to a new position every fixed frame.
 
         /// <summary>
-        /// Triggers when the parachute enters a collider, will return if the collider doesn't belong to a wall.
-        /// If it collides with a wall, will reverse the X speed so it moves the other way, and flips the asset.
+        /// Triggers when it hits another collider, then checks if it hit a wall
         /// </summary>
         /// <param name="other">"The other collider with which the parachute collided"</param>
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.CompareTag(wallTag)) {return;}
-            _xSpeed = -_xSpeed;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            CheckForWallHit(other);
         }
 
-        private void AssignsEvents() => GameOverManager.Instance.OnDefeat += DestroySelf;     //Assigns destroySelf on OnDefeat
-        
-        private void UnAssignEvents() => GameOverManager.Instance.OnDefeat -= DestroySelf;    //Unassigns DestroySelf on OnDefeat
+        private void AssignsEvents() => GameOverManager.Instance.OnGameOver += DestroySelf;     //Assigns destroySelf on OnDefeat
 
-        private void DestroySelf() => Destroy(gameObject);                                  //Destroys the gameobject
+        private void UnAssignEvents() => GameOverManager.Instance.OnGameOver -= DestroySelf;    //Unassigns DestroySelf on OnDefeat
+
+        private void DestroySelf() => Destroy(gameObject);                                  //Destroys the gameObject
 
         /// <summary>
         /// Sets random values to xSpeed and ySpeed using the minValue and maxValue of randomXSpeedParameters and randomYSpeedParameters
         /// </summary>
-        private void GenerateSpeed()
+        private void SetSpeed()
         {
-            _xSpeed = Random.Range(randomXSpeedParameters.minValue, randomXSpeedParameters.maxValue);
-            _ySpeed = Random.Range(randomYSpeedParameters.minValue, randomYSpeedParameters.maxValue);
+            xSpeed = Random.Range(randomXSpeedParameters.minValue, randomXSpeedParameters.maxValue);
+            ySpeed = Random.Range(randomYSpeedParameters.minValue, randomYSpeedParameters.maxValue);
+            _speed = new Vector3(xSpeed, ySpeed, 0f);
         }
-        
+
         /// <summary>
         /// Moves the parachute to a new position based on xSpeed and ySpeed. Uses Time.deltaTime to make sure it isn't dependent on fps
         /// </summary>
         private void MoveParachute()
         {
-            transform.position -= new Vector3(_xSpeed, _ySpeed, 0) * Time.deltaTime;
+            transform.position -= _speed * Time.deltaTime;
         }
-        
+
+        /// <summary>
+        /// Triggers when the parachute enters a collider, will return if the collider doesn't belong to a wall.
+        /// If it collides with a wall, will reverse the X speed so it moves the other way, and flips the asset.
+        /// </summary>
+        /// <param name="other">"The other collider with which the parachute collided"</param>
+        private void CheckForWallHit(Collision2D other)
+        {
+            if (!other.gameObject.CompareTag(wallTag))
+            {
+                return;
+            }
+            _speed = new Vector3(-_speed.x, _speed.y, 0f);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 }

@@ -12,11 +12,11 @@ namespace Score
     {
         public static ScoreManager Instance { get; private set; }                       //The instance used by other classes to easily access this class.
         
-        private int _score;                                                             //How many parachutes the player has cuaght
+        private int _score;                                                             //How many parachutes the player has caught
         
         public int Score { get => _score; private set => _score = value; }              //Getter/Setter for _score
         
-        public Action<int> OnScoreChanged;                                              //<int: the new score> Gets called when the score is changed                                
+        public Action<int> onScoreChanged;                                              //<int: the new score> Gets called when the score is changed                                
 
         private void Awake() => AssignInstance();                                       //Assigns the instance before the game starts.
         
@@ -27,7 +27,7 @@ namespace Score
         public void AddScore(int score)
         {
             _score += score;
-            OnScoreChanged?.Invoke(_score);
+            onScoreChanged?.Invoke(_score);
         }
         
         /// <summary>

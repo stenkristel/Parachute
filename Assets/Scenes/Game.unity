@@ -448,6 +448,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
+      propertyPath: parachutePrefab
+      value: 
+      objectReference: {fileID: 177853590164043421, guid: 6e5137d01e17f854487abb97916a67d6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -467,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227493950629063471, guid: 6dbc1edc0ed094542aa9723f65306a65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.18
+      value: -5.24
       objectReference: {fileID: 0}
     - target: {fileID: 1227493950629063471, guid: 6dbc1edc0ed094542aa9723f65306a65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -723,6 +727,14 @@ PrefabInstance:
     - target: {fileID: 5566917388318518586, guid: 893ecec8961ddbe42a1416c5801a1bd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251328490706154913, guid: 893ecec8961ddbe42a1416c5801a1bd7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8246523016347761820, guid: 893ecec8961ddbe42a1416c5801a1bd7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

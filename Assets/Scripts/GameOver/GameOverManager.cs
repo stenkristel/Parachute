@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace GameOver
 {
+    //Made by: Sten Kristel
     /// <summary>
     /// Singleton used for keeping track of how many parachutes the player has missed,
     /// and making them lose the game when a threshold has been reached.
@@ -18,7 +19,7 @@ namespace GameOver
         private int _parachutesMissed;                                                  //The amount of parachutes the player has missed.
         
         public Action<int> OnParachuteMissed;                                           //Event that gets called when the player misses a parachute and gives the amount of parachutes missed with it
-        public Action OnDefeat;
+        public Action OnGameOver;                                                       //Event that gets called when the player has missed to many parachutes and the game is over
         
         private void Awake() => AssignInstance();                                        //Assigns the instance before the game starts.
 
@@ -27,13 +28,13 @@ namespace GameOver
         /// When the bottom borer is hit, it adds 1 to parachutesMissed and checks if it reaches the loseThreshold,
         /// if it does; invoke the defeat event
         /// </summary>
-        public void OnHitBottomBorder()
+        public void ParachuteMiss()
         {
             _parachutesMissed++;
             OnParachuteMissed?.Invoke(_parachutesMissed);
             if (_parachutesMissed == parachutesMissedLoseThreshold)
             {
-                OnDefeat?.Invoke();
+                OnGameOver?.Invoke();
             } 
         }
         

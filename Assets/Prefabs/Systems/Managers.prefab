@@ -168,10 +168,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfcf9b5d7006ee147be24fa95ec2b3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parachutePrefabs:
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+  - {fileID: 177853590164043421, guid: 6e5137d01e17f854487abb97916a67d6, type: 3}
+  - {fileID: 177853590164043421, guid: 6e5137d01e17f854487abb97916a67d6, type: 3}
+  - {fileID: 177853590164043421, guid: 08e7c8ab2e64ab7429965fb9713382f8, type: 3}
+  - {fileID: 177853590164043421, guid: 08e7c8ab2e64ab7429965fb9713382f8, type: 3}
   randomSpawnDelayParameters:
-    minValue: 1
-    maxValue: 5
-  parachutePrefab: {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+    minValue: 1.5
+    maxValue: 3.5
   parachuteSpawnPoint: {fileID: 2349661759400244133}
 --- !u!1 &9145487355765332052
 GameObject:
