@@ -8,7 +8,7 @@ namespace Parachute
     /// <summary>
     /// Parachute variant that first only moves horizontally, will then stop for a couple seconds, and then move down very fast
     /// </summary>
-    public class FallingParachute : ParachuteBehaviour
+    public class FallingChute : ParachuteBehaviour
     {
         [SerializeField] private MinAndMaxFloats moveHorizontallyDurationParameters;    //The minimum and maximum duration for how long the parachute moves horizontally
         [SerializeField] private float waitForFallingDuration;                          //The duration the parachute stand still before moving down
