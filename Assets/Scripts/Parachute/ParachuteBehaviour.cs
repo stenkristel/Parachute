@@ -33,7 +33,7 @@ namespace Parachute
         protected virtual void Start()
         {
             AssignsEvents();
-            SetSpeed(); 
+            SetRandomSpeed(); 
         }
 
         private void OnDestroy() => UnAssignEvents();           //Unassigns events on destroy. (prevents issues on scene changes)
@@ -55,14 +55,19 @@ namespace Parachute
 
         private void DestroySelf() => Destroy(gameObject);                                  //Destroys the gameObject
 
+        public void SetSpeed(Vector2 speed)
+        {
+            Speed =  speed;
+        }
+        
         /// <summary>
         /// Sets random values to xSpeed and ySpeed using the minValue and maxValue of randomXSpeedParameters and randomYSpeedParameters
         /// </summary>
-        private void SetSpeed()
+        private void SetRandomSpeed()
         {
             xSpeed = Random.Range(randomXSpeedParameters.minValue, randomXSpeedParameters.maxValue);
             ySpeed = Random.Range(randomYSpeedParameters.minValue, randomYSpeedParameters.maxValue);
-            _speed = new Vector3(xSpeed, ySpeed, 0f);
+            SetSpeed(new Vector3(xSpeed, ySpeed, 0f));
         }
 
         /// <summary>

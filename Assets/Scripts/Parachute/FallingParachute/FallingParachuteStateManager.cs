@@ -7,14 +7,14 @@ namespace Parachute.FallingParachute
     public class FallingParachuteStateManager : MonoBehaviour
     {
         [SerializeField] private BaseState startingState;
-        [SerializeField] private RandomTimerState horizontalMovementState;
-        [SerializeField] private WaitForDownMovementState waitForDownMovementState;
+        [SerializeField] private WaitingState horizontalMovementState;
+        [SerializeField] private WaitingStateIntervals waitingStateIntervals;
         [SerializeField] private BaseState downMovementState;
-        private  StateBehaviour _stateBehaviour;
+        private StateBehaviour _stateBehaviour;
 
         private void Start()
         {
-            CreatStateMachine();
+            CreateStateBehaviour();
             CreateStateConditions();
         }
 
@@ -30,29 +30,30 @@ namespace Parachute.FallingParachute
 
         private void OnDestroy()
         {
-            DeleatStateConditions();
+            UnsubscribeEvents();
         }
 
-        private void CreatStateMachine()
+        private void CreateStateBehaviour()
         {
-            _stateBehaviour = new StateBehaviour(startingState.GetType(), horizontalMovementState, waitForDownMovementState, downMovementState);
+            _stateBehaviour = new StateBehaviour(startingState.GetType(),
+                horizontalMovementState, waitingStateIntervals, downMovementState);
         }
 
         private void CreateStateConditions()
         {
             horizontalMovementState.onTimerEnd += SwitchToWaitForDownMovementState;
-            waitForDownMovementState.onFinishedWaiting += SwitchToDownMovementState;
+            waitingStateIntervals.onFinishedWaiting += SwitchToDownMovementState;
         }
 
-        private void DeleatStateConditions()
+        private void UnsubscribeEvents()
         {
             horizontalMovementState.onTimerEnd -= SwitchToWaitForDownMovementState;
-            waitForDownMovementState.onFinishedWaiting -= SwitchToDownMovementState;
+            waitingStateIntervals.onFinishedWaiting -= SwitchToDownMovementState;
         }
 
         private void SwitchToWaitForDownMovementState()
         {
-            _stateBehaviour.SwitchState(waitForDownMovementState.GetType());
+            _stateBehaviour.SwitchState(waitingStateIntervals.GetType());
         }
         
         private void SwitchToDownMovementState()

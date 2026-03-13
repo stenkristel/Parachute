@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingState: {fileID: 5332412564540971422}
   horizontalMovementState: {fileID: 5332412564540971422}
-  waitForDownMovementState: {fileID: 6945767742626522504}
+  waitingStateIntervals: {fileID: 6945767742626522504}
   downMovementState: {fileID: 5444388819073486745}
 --- !u!114 &5332412564540971422
 MonoBehaviour:
@@ -95,7 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5fbc0ea5ac23348a595055d368e443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration:
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+  waitDuration:
     minValue: 2
     maxValue: 7
 --- !u!114 &6945767742626522504
@@ -110,12 +116,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b93debb3c4bb9428b360e2cc067ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parachuteBehaviour: {fileID: 1053408430189590291}
-  waitForFallingDuration: 2
-  moveDownSymbols:
-  - {fileID: 2559299631372148352}
-  - {fileID: 7405104698603490293}
-  - {fileID: 6204815464390554201}
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6204815464390554201}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  waitTime: 1
+  intervals:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2559299631372148352}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7405104698603490293}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2559299631372148352}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6204815464390554201}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7405104698603490293}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5444388819073486745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +214,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cfe0856d2ea2f44946d55d9572e500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
   randomSpeedYParamaters:
     minValue: 7
     maxValue: 10

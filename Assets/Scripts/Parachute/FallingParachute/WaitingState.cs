@@ -7,15 +7,15 @@ using Random = UnityEngine.Random;
 
 namespace Parachute.FallingParachute
 {
-    public class RandomTimerState : BaseState
+    public class WaitingState : BaseState
     {
-        [SerializeField] private MinAndMaxFloats timerDuration;
+        [SerializeField] private MinAndMaxFloats waitDuration;
 
         public Action onTimerEnd;
 
         public override void OnEnter()
         {
-            StartCoroutine(Timer(Random.Range(timerDuration.minValue, timerDuration.maxValue)));
+            StartCoroutine(Timer(Random.Range(waitDuration.minValue, waitDuration.maxValue)));
         }
 
         private IEnumerator Timer(float time)
