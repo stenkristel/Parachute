@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3451963010780407721}
-  - component: {fileID: 7675431581187456377}
   - component: {fileID: 1287504596840027733}
   - component: {fileID: 7428785420729785186}
   - component: {fileID: 4274027870583357257}
+  - component: {fileID: 5621667029318069241}
   m_Layer: 3
-  m_Name: Parachute
+  m_Name: ParachuteProjectile
   m_TagString: parachute
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,26 +39,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 5.63}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7675431581187456377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177853590164043421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66932615a76b88a49af97ce80017dd64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomXSpeedParameters:
-    minValue: 2
-    maxValue: 4
-  randomYSpeedParameters:
-    minValue: 0.8
-    maxValue: 1.5
-  wallTag: Wall
-  spriteRenderer: {fileID: 1287504596840027733}
 --- !u!212 &1287504596840027733
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1642668734, guid: 56696658d1706cc45838ded421a439a5, type: 3}
+  m_Sprite: {fileID: 1769998856, guid: 547fb83f54adfef4ca2c5d595c0ccd6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -187,3 +167,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &5621667029318069241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177853590164043421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3117f1481f09348ad4e5d0492e18df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomXSpeedParameters:
+    minValue: 2
+    maxValue: 4
+  randomYSpeedParameters:
+    minValue: 0.8
+    maxValue: 1.5
+  wallTag: Wall
+  spriteRenderer: {fileID: 1287504596840027733}
+  projectilePrefab: {fileID: 427529659092773219, guid: 765fedab6b7d95548adf7ed813da3546, type: 3}
+  fireDelay: 3

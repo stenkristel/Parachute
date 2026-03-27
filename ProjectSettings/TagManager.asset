@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wall
-  - Parachute
+  - projectile
+  - parachute
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,9 @@ namespace GameOver
         /// <param name="other">The other object that has been hit</param>
         private void OnCollisionEnter2D(Collision2D other)
         {
+            var tag = other.gameObject.tag;
             Destroy(other.gameObject);
+            if (tag == "projectile") return;
             GameOverManager.Instance.ParachuteMiss();
         }
     }

@@ -454,12 +454,28 @@ PrefabInstance:
       objectReference: {fileID: 177853590164043421, guid: 6e5137d01e17f854487abb97916a67d6, type: 3}
     - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
       propertyPath: parachutePrefabs.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
       propertyPath: 'parachutePrefabs.Array.data[0]'
       value: 
+      objectReference: {fileID: 1670905290961143372, guid: 474a2d831c8e5e24aac9773f3fd69ead, type: 3}
+    - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
+      propertyPath: 'parachutePrefabs.Array.data[1]'
+      value: 
       objectReference: {fileID: 177853590164043421, guid: e863d745634075c4c8bf3f0c2e446400, type: 3}
+    - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
+      propertyPath: 'parachutePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+    - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
+      propertyPath: 'parachutePrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 177853590164043421, guid: a9d7080af881c0240877bcf40a7a84ec, type: 3}
+    - target: {fileID: 5121478295876479746, guid: 56247e4dffbad424f8dd277b453dcc45, type: 3}
+      propertyPath: randomSpawnDelayParameters.minValue
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -678,6 +694,10 @@ PrefabInstance:
     - target: {fileID: 5729762114009873183, guid: 0ac55ee25183adf40837b7a8cf170a8f, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050976382552789251, guid: 0ac55ee25183adf40837b7a8cf170a8f, type: 3}
+      propertyPath: parachuteTag
+      value: parachute
       objectReference: {fileID: 0}
     - target: {fileID: 6050976382552789251, guid: 0ac55ee25183adf40837b7a8cf170a8f, type: 3}
       propertyPath: parachuteLayerMask.m_Bits
