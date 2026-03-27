@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3451963010780407721}
   - component: {fileID: 7675431581187456377}
+  - component: {fileID: -53951381220369074}
   - component: {fileID: 1287504596840027733}
   - component: {fileID: 7428785420729785186}
   - component: {fileID: 4274027870583357257}
@@ -57,8 +58,20 @@ MonoBehaviour:
   randomYSpeedParameters:
     minValue: 0.8
     maxValue: 1.5
-  wallTag: Wall
-  spriteRenderer: {fileID: 1287504596840027733}
+--- !u!114 &-53951381220369074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177853590164043421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d11ef1b1c780449a2a77f56029e719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 7675431581187456377}
+  playerHitScoreIncrease: 1
 --- !u!212 &1287504596840027733
 SpriteRenderer:
   m_ObjectHideFlags: 0

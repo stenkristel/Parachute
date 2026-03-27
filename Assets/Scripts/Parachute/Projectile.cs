@@ -14,7 +14,7 @@ namespace Parachute
         
         private float _speed;                               //The speed at which the projectile moves, also determines direction
         private float _parachuteSpeedMultiplier;            //The multiplier the projectile will give when it hits a parachute
-        private ParachuteBehaviour _spawnerParachute;       //The originator parachute that spawned this
+        private ParachuteMovement _spawnerParachute;       //The originator parachute that spawned this
 
         private void Start() => GameOverManager.Instance.OnGameOver += DestroySelf;     //Destroys self on game end to avoid issues
 
@@ -46,7 +46,7 @@ namespace Parachute
         /// <param name="speed">/The speed at which the projectile moves</param>
         /// <param name="speedMultiplier">The multiplier the projectile will give when it hits a parachute</param>
         /// <param name="spawnerParachute">The originator parachute that spawned this</param>
-        public void Initialize(float speed, float speedMultiplier, ParachuteBehaviour spawnerParachute)
+        public void Initialize(float speed, float speedMultiplier, ParachuteMovement spawnerParachute)
         {
             _speed = speed;
             _parachuteSpeedMultiplier = speedMultiplier;
@@ -85,7 +85,7 @@ namespace Parachute
         /// <param name="hitGameObject">The hit GameObject</param>  
         private void CheckForHitParachute(GameObject hitGameObject)
         {
-            var parachute = hitGameObject.GetComponent<ParachuteBehaviour>();
+            var parachute = hitGameObject.GetComponent<ParachuteMovement>();
             if (parachute == null || parachute == _spawnerParachute) return;
             parachute.Speed *= _parachuteSpeedMultiplier;
             Destroy(gameObject);

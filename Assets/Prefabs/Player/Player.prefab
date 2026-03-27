@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315250934958581013}
   - component: {fileID: 325822928008988478}
+  - component: {fileID: 2200677952498417113}
   - component: {fileID: 2044094604619663333}
   - component: {fileID: 6050976382552789251}
   - component: {fileID: 5729762114009873183}
@@ -91,6 +92,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2200677952498417113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171136056908739808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af1c8ff9dc74684b9c12f516eea818c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindings:
+  - keyCode: 97
+    command: {fileID: 0}
+    onPressed:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2044094604619663333}
+          m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+          m_MethodName: MovePlayer
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: -1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onUp:
+      m_PersistentCalls:
+        m_Calls: []
+  - keyCode: 100
+    command: {fileID: 0}
+    onPressed:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2044094604619663333}
+          m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+          m_MethodName: MovePlayer
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onUp:
+      m_PersistentCalls:
+        m_Calls: []
+  - keyCode: 32
+    command: {fileID: 0}
+    onPressed:
+      m_PersistentCalls:
+        m_Calls: []
+    onDown:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2044094604619663333}
+          m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+          m_MethodName: Dive
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onUp:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &2044094604619663333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,10 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  moveAcceleration: 0.5
-  moveDrag: 0
-  moveRightKey: 100
-  moveLeftKey: 97
+  diveDepth: 1
+  diveDuration: 0.5
 --- !u!114 &6050976382552789251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf91db7c67bf014e8f9ba77485d3820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parachuteScoreChange: 1
-  parachuteTag: Parachute
 --- !u!61 &5729762114009873183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,4 +273,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4

@@ -1,6 +1,7 @@
 using StateMachine;
 using Structs;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Parachute.FallingParachute
@@ -8,12 +9,12 @@ namespace Parachute.FallingParachute
     public class DownMovementState : BaseState
     {
         [SerializeField] private MinAndMaxFloats randomSpeedYParamaters;
-        [SerializeField] private ParachuteBehaviour parachuteBehaviour;
+        [FormerlySerializedAs("parachuteBehaviour")] [SerializeField] private ParachuteMovement parachuteMovement;
 
         public override void OnEnter()
         {
             float ySpeed = Random.Range(randomSpeedYParamaters.minValue, randomSpeedYParamaters.maxValue);
-            parachuteBehaviour.Speed = new Vector3(0, ySpeed, 0);
+            parachuteMovement.Speed = new Vector3(0, ySpeed, 0);
         }
     }
 }
